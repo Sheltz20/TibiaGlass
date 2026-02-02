@@ -1,0 +1,5 @@
+- Build a Windows WPF app (C#/.NET 8).
+- Keep the app lightweight and avoid unnecessary dependencies.
+- Prefer simple, robust Win32 interop (keyboard hook) over complex frameworks.
+- The app should run from a tray icon and not show a main window by default.
+- Hotkey behavior: show magnifier while Alt is held; hide immediately on release.

@@ -1,0 +1,66 @@
+<Window x:Class="TibiaGlassMagnifier.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="TibiaGlass Settings"
+        Width="420" Height="320"
+        MinWidth="420" MinHeight="300"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanResize"
+        ShowInTaskbar="False">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <Grid Margin="14">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" FontWeight="SemiBold" Text="Hotkey (hold to magnify)" />
+
+        <Border Grid.Row="1" Margin="0,6,0,0" Padding="10" CornerRadius="8" BorderThickness="1" BorderBrush="#22000000" Background="#08FFFFFF">
+            <StackPanel>
+                <TextBox x:Name="HotkeyBox"
+                         Height="28"
+                         IsReadOnly="True"
+                         Focusable="True"
+                         PreviewKeyDown="HotkeyBox_OnPreviewKeyDown"
+                         GotKeyboardFocus="HotkeyBox_OnGotKeyboardFocus"
+                         LostKeyboardFocus="HotkeyBox_OnLostKeyboardFocus"
+                         ToolTip="Click here, then press the key combination you want (e.g. Ctrl+1). Press Backspace/Delete for Alt-only." />
+                <TextBlock Margin="0,6,0,0" Foreground="#66000000" FontSize="12"
+                           Text="Tip: click the box, then press the combo. Backspace/Delete sets Alt-only." />
+            </StackPanel>
+        </Border>
+
+        <StackPanel Grid.Row="2" Margin="0,12,0,0">
+            <TextBlock FontWeight="SemiBold" Text="Zoom" />
+            <ComboBox x:Name="ZoomCombo"
+                      Margin="0,6,0,0"
+                      Height="28"
+                      Width="140"
+                      HorizontalAlignment="Left"
+                      SelectionChanged="ZoomCombo_OnSelectionChanged" />
+
+            <TextBlock Margin="0,14,0,0" FontWeight="SemiBold" Text="Output size" />
+            <StackPanel Margin="0,6,0,0" Orientation="Horizontal" VerticalAlignment="Center">
+                <Slider x:Name="SizeSlider"
+                        Width="260"
+                        Minimum="200"
+                        Maximum="900"
+                        TickFrequency="10"
+                        IsSnapToTickEnabled="True"
+                        ValueChanged="SizeSlider_OnValueChanged" />
+                <TextBlock x:Name="SizeLabel" Margin="10,0,0,0" VerticalAlignment="Center" />
+            </StackPanel>
+            <TextBlock Margin="0,6,0,0" Foreground="#66000000" FontSize="12"
+                       Text="Tip: size is the magnifier window in pixels (keeps a 4:3 ratio)." />
+        </StackPanel>
+
+            <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,14,0,0">
+                <Button Width="90" Margin="0,0,8,0" Content="Cancel" Click="Cancel_OnClick" />
+                <Button Width="90" Content="Save" IsDefault="True" Click="Save_OnClick" />
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Window>
